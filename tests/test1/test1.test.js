@@ -12,5 +12,4 @@ describe('first test', ()=>{
 
         expect(test1.SumCB(10,callback)).toBe(11);
     })
-
 })

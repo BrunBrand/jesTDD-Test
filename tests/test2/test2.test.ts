@@ -20,7 +20,7 @@ describe('TDD', ()=>{
     })
 
     it("Get one lead",()=>{
-        const result = tested.get("brb@gm.com");
+        const result = tested.get(user.email);
         expect(result).toBeInstanceOf(LeadEntity);
         expect(result.name).toBe(user.name);
         expect(result.email).toBe(user.email);

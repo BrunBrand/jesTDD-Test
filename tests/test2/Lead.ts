@@ -1,27 +1,42 @@
 import { LeadEntity } from "./LeadEntity";
 
+
+const db = new Array<LeadEntity>();
+
 export class Lead{
-    public get(name:string):LeadEntity{
+    public get(email:string){
         let obj = new LeadEntity();
-        obj.name = "bruno";
-        obj.email = "brb@gmail.com";
-        obj.phone = "15556123-123";
-        
+
+        db.forEach(f=>{
+            if(f.email == email) return obj=f; 
+        })
+
         return obj;
     }
 
     public getAll(): LeadEntity[]{
-        let obj = new Array<LeadEntity>();
-        obj.push(new LeadEntity());
-        return obj;
+        return db;
     }
 
     public add(name:string, email:string, phone:string):boolean{
+        let lead = new LeadEntity();
+
+        lead.email  = email;
+        lead.name   = name;
+        lead.phone  = phone;
+        db.push(lead);
+
         return true;
     }
 
     public del(email:string):boolean{
-        return true;
+        let result = false;
+        db.forEach(f=>{
+            if(f.email == email){
+                db.pop();
+                result = true;
+            }
+        })
+        return result;
     }
-
 }

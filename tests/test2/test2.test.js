@@ -15,7 +15,7 @@ describe('TDD', function () {
         expect(result).toBe(true);
     });
     it("Get one lead", function () {
-        var result = tested.get("brb@gm.com");
+        var result = tested.get(user.email);
         expect(result).toBeInstanceOf(LeadEntity_1.LeadEntity);
         expect(result.name).toBe(user.name);
         expect(result.email).toBe(user.email);

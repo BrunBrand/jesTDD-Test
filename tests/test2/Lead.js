@@ -2,26 +2,38 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Lead = void 0;
 var LeadEntity_1 = require("./LeadEntity");
+var db = new Array();
 var Lead = /** @class */ (function () {
     function Lead() {
     }
-    Lead.prototype.get = function (name) {
+    Lead.prototype.get = function (email) {
         var obj = new LeadEntity_1.LeadEntity();
-        obj.name = "bruno";
-        obj.email = "brb@gmail.com";
-        obj.phone = "15556123-123";
+        db.forEach(function (f) {
+            if (f.email == email)
+                return obj = f;
+        });
         return obj;
     };
     Lead.prototype.getAll = function () {
-        var obj = new Array();
-        obj.push(new LeadEntity_1.LeadEntity());
-        return obj;
+        return db;
     };
     Lead.prototype.add = function (name, email, phone) {
+        var lead = new LeadEntity_1.LeadEntity();
+        lead.email = email;
+        lead.name = name;
+        lead.phone = phone;
+        db.push(lead);
         return true;
     };
     Lead.prototype.del = function (email) {
-        return true;
+        var result = false;
+        db.forEach(function (f) {
+            if (f.email == email) {
+                db.pop();
+                result = true;
+            }
+        });
+        return result;
     };
     return Lead;
 }());

@@ -1,3 +1,3 @@
 # jestTDD-Test
 
-## To run a test use npx jest <path>
+## To run a test use npx jest path

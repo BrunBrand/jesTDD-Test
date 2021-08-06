@@ -34,6 +34,10 @@ describe('TDD', ()=>{
 
     })
 
+    it("Delete lead",()=>{
+        const result = tested.del(user.email);
+        expect(result).toBe(true);
+    })
 
 
 
